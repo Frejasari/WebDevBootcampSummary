@@ -548,3 +548,92 @@ Animal2.prototype.showName = function() {
 var myAnimal2 = new Animal2("Arya", "Josephine");
 var myDog = new Dog("Max", "Owen");
 var duck = new Duck("Daffy");
+
+// cmd+alt+j => open console in Chrome
+// tab : Network : there is stuff that happens when the program runs: XHR
+// cmd + r => refresh site
+
+//  ----- DEBUGGING IN THE GOOGLE CHROME CONSOLE -----
+/* in tab 'Sources'
+add breakpoint by clicking on the nr of the line
+'step over next function call' -> leads to next line in code if there is no function in this line, will not look into if or for loops! 
+you can add some variables or functions to watches
+*/
+
+// try-catch-statement
+
+function getUserName(user) {
+  if (!user.name) {
+    throw new SyntaxError("Incomplete Syntax");
+  }
+  console.log("the name is: " + user.name);
+}
+
+getUserName({
+  favoriteColor: "green",
+  age: 32
+}); // will throw an error which is not caught! So the execution of the program will stop.
+
+try {
+  getUserName({ lastName: "Lopez" }); // this will throw an error ---> therefore the catch statement is executed
+} catch {
+  console.log("Gets executed if there's an error");
+} finally {
+  console.log("I will get executed no matter what!");
+}
+
+//  ASYNC AND CALLBACK
+
+function square(x) {
+  return x * x;
+}
+
+function f(n, cb) {
+  return Array(n)
+    .fill(0)
+    .map(function() {
+      return cb(Math.random());
+    });
+}
+
+// function f2 does the same! Just in a non-functional-programming way
+function f2(n, cb) {
+  var res = [];
+  for (var i = 0; i < n; i++) {
+    res.push(cb(Math.random()));
+  }
+  return res;
+}
+
+f(10, function(x) {
+  return 10 * x;
+});
+f(2, square);
+
+// SET TIMEOUT -----
+setTimeout(function() {
+  console.log("i will execute after 2sec");
+}, 2000);
+
+setTimeout(function() {
+  console.log("I will execute immediately but just after all synchronous stuff is done!");
+}, 0);
+
+console.log("I am synchronous, I will be initialized first!");
+
+// SET INTERVAL
+// same as setTimeout just that it is looping!
+var interval1 = setInterval(function() {
+  console.log("I will be executed every second until you clear me!");
+}, 1000);
+
+setTimeout(() => {
+  clearInterval(interval1);
+}, 5000); // the last will not get executed!
+
+//  THE BIND KEYWORD
+chrono.startClick.bind(chrono);
+// this sets the this in startClick to chromo!!!!
+
+// THIS Keyword!
+// in a lambda the 'this' keyword will not correspond to the actual
