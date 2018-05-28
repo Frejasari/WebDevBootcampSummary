@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<!-- Inline vs Block Elements
+  http://learn.ironhack.com/#/learning_unit/3015
+  - Block elements will take the place until the end
+    - you can set width and height
+  - Inline element will just take exactly the place it needs
+  - Inline-Block element (img): can hold a width and heigth but will be inlined
+-->
+
+<!-- paragraph tag -->
+<p></p>
+<!-- preformatted tag -->
+<pre></pre>
+<!-- headings -->
+<h1></h1>
+<!-- lists -->
+<!-- unordered list -->
+<ul>
+  <li>list element 1</li>
+  <li>list element 2</li>
+</ul>
+<!-- ordered list -->
+<ol>
+  <li>list element 1</li>
+  <li>list element 2</li>
+</ol>
+
+<!-- table -->
+<table>
+  <tr>
+    <th>table head 1/1</th>
+    <th>table head col 2/1</th>
+  </tr>
+  <tr>
+    <td>table data 1/2</td>
+    <td>table data 2/2</td>
+  </tr>
+  <tr>
+    <td>table data 1/3</td>
+    <td>table data 2/3</td>
+  </tr>
+</table>
+
+<!-- FORM tag:
+the form tag is a html block element, that is used to
+contain a series of inputs, labels, buttons for user 
+interactions, to retreive the data and send it to the server
+ACTION attribute: points to the url the form will send its data to -->
+<form action="web-url">
+  <div>
+    <label for="name">Name</label>
+    <br>
+    <input type="text" id="name">
+  </div>
+  <div>
+    <label for="comment">Comment</label>
+    <br>
+    <textarea id="comment"></textarea>
+  </div>
+</form>
+
+<!-- INPUT tag: 
+inline element that allows user to enter data
+TYPE attribute: specifies the input type, default: text
+- type="text" allows for max 255char in single line
+- type="number"
+- type="email" -->
+<input type="radio" id="mad" value="Madrid" name="iron-city">
+<label for="mad">Madrid</label>
+<!-- -type="radio" allows the user to mark one of multiple choices
+  creates circles that can be clicked
+  - attribute value="" which specifies the value that is send to the server
+  - attribute name="" specifies the radio buttons that belong to one group
+- type="checkbox" allows the user to select one or multiple options
+  - attribute checked allows to select a checkbox or radio by default!!
+- type="button" value="" does nothing by default, value specifies the text in the btn
+  type="submit" represents a button, does nothing unless it is located in a form -->
+
+<!-- BUTTON tag:
+- element that represents a simple button
+- does nothing when you click on it by default
+- type="submit" or type="button" -->
+
+<!-- TEXTAREA type: -->
+<div>
+  <label for="comment-2">Comment</label>
+  <br>
+  <textarea rows="10" cols="50" id="comment-2"></textarea>
+</div>
+<!-- allows user to submit text
+difference to <input type="text">: textarea allows for
+multiple line 
+the size is specified through rows and cols, do not use CSS
+to resize a textare, the text will be off center -->
+
+<!-- SELECT type: 
+allows user to select one option from a dropdown list -->
+<form>
+  <select name="iron-city">
+    <option value="mad">Madrid</option>
+    <option value="bcn">Barcelona</option>
+    <option value="mia">Miami</option>
+  </select>
+</form>
+
+<!-- LABEL tag:
+- inlie element
+- represents a caption for HTML input of all types
+- the label for and input id attributes correspond, 
+  you can click on the label to focus the input field -->
+
+<!-- SCRIPTS
+  inline tag that is useful to embed some JS later on -->
+
+
+<!-- AUTO COMPLETION -->
+<p class="class"></p>
+<!--write p.class + tab-->
+
+<!-- this will prevent the device to just zoom out!! - I made my website responsive! -->
+<meta name="viewport" content="width=device-width, initial-scale=1">

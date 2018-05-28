@@ -1,0 +1,325 @@
+/* ----- CONTENT, PADDING, BORDER, MARGIN -----
+  padding: will get the background-color as well
+  border: can have another color, background color 
+    is the color from the content as well, adds up to the width
+  margin: is used to separate things on the page
+*/
+
+/* ----- UNITS ------ 
+  - px 
+  - vw   : 1vw = 1% of viewport/screen width; dont use this for fonts!
+  - vh   : 1vh = 1% of viewport/screen height; dont use this for fonts!
+  - vmin : 1vmin = Math.min(1vw, 1vh) --> the smallest of those 2
+  - vmax : 1vmax = Math.max(1vw, 1vh) --> the biggest of those 2
+  - em   : relative to the parents font-size 2em = 2*parent-font-size
+  - rem  : root em, always relative to the font-size that is defined in the html{} tag 
+        (default font size selected if you do not specify it!)
+  */
+
+/* ---- use percent as unit ----
+  if you use % it is always related to the width of the screen! 
+  (even if applied to the heigth/top/bottom of an element)
+  --> Don't make a height/ top/ bottom in % ! This will lead to weird side effects
+*/
+
+div {
+  background-color: green; /* refers to the content!*/
+  /* border: border-width, border-style, border-color */
+  border: 1px solid #17212e;
+  border-radius: 10px;
+  /* border-width: [border-top] [border-right] [border-bottom] [border-left];
+  border-width increases the width of the element!! 
+  border- width is applied to all sides, so this will 
+  increase the width to width + 2*border-width 
+  border-radius: if this is set to (width+padding)/2 it will be a circle if height = width*/
+  /* padding: the padding sets the space between the content and the border
+   [padding-top] [padding-right] [padding-bottom] [padding-left] */
+  padding: 10px 5px 10px 5px;
+  /* The padding will add to the total width */
+  padding: 10px 20px 15px; /* padding-top 10px
+  padding-right and padding-left 20px
+  padding-bottom 15px */
+  padding: 10px 20px; /* padding-top and padding-bottom 10px
+  padding-right and padding-left 20px */
+  /* margin: sets the space between the border and the other elements around it 
+  the size of the object will not chagne due to the margin
+  but it will take more space in the HTML
+  margin: [margin-top] [margin-right] [margin-bottom] [margin-left];*/
+  margin: 10px;
+}
+
+/*  center an element horizontal of a box: */
+.box {
+  text-align: center; /*on the parent!*/
+  margin: 0 auto; /*on the block element itself*/
+}
+
+/* The normal flow:
+  - box or inline formatting context
+  - block boxes --> block formatting context, under
+  - inline boxes --> inline formatting context, next to
+  */
+
+.box {
+  height: 100px;
+  width: 200px;
+}
+
+/* ----- FLOATING ------ */
+/*  Normal flow:
+      - inline: next to
+      - block: under 
+      the FLOAT property specifies, that an element should be positioned differently:
+      - left: float on the left side of its containing block
+      - right: float on the right side of its containing block
+      - none: doesnt float // normal behavior?
+      - inherit: take the float value of the parent container
+
+    Clearing the float (CLEAR property)
+      - left: clears the float from the left side
+      - right: clears the float from the right side
+      - both: Clears floats from both directions
+      - none: default value*/
+
+/* ---- POSITIONING ----- */
+/* https://css-tricks.com/centering-css-complete-guide/
+
+css property position 
+    every elements position is by default static
+    when it is static it is noch considered as positoned
+    with every other position it is considered as positioned 
+    - static
+    - relative : 
+    - absolute : will always be on the same position to the parent (which needs to be positioned as well!)
+    - fixed : will always be on the same position on the screen
+    
+  for positioned elements the top, right, left, bottom attributes are taken into consideration */
+
+/* ---- position: static -----
+  default behavior */
+.static {
+  position: static;
+  background-color: aqua;
+}
+
+/* ---- position: relative ----
+    - behaves by default the same as the static value
+    - you can set left/top/bottom/right attributes as offset
+      will move the element relative to its default place
+    - left and top are the leading properties and will override right and bottom
+    - you can specify negative positions
+    - the position is always calculated from the direct parent elements position */
+.relative {
+  position: relative;
+  border: 2px solid green;
+  left: 100px; /* will move the element to the right --> offset from the left!*/
+  bottom: 50px;
+}
+
+/* ---- position: absolute ----
+    - positioned to the parent element (position not static), 
+    - those elements are removed from the flow 
+      -> will not affect or be affected by other elements 
+    - you can specify the width and height of those elements dynamically without the width/height 
+        attributes but by using the offset attributes top/right/bottom/left */
+.absolute {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
+
+/* ----- position: fixed ----
+    - same as absolute except that it is ALWAYS positioned to the screen and not to the parent!
+    - the element will always be in the same place, even when I scroll */
+.fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0; /* will be positioned in the bottom right of the screen - ALWAYS*/
+}
+
+/*   FLEXBOX : https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+/* 
+  flex-grow: 1; // default is 0, will split the remaining space to the items! 
+    1/(1+0) -> 100% for one item with 1 and one without
+    1/(1+1+0) -> 50% for 2 items with 1 and one without
+    2/(2+1+0) -> 2/3 to on item, 1/3 to 1 item and 0 to the last
+*/
+
+/* ----- TRANSITION  /  ANIMATION ------ */
+/* TRANSITION
+transition-timing-function: easeInQuint : starts slow, https://easings.net/ */
+p:hover {
+  background-color: #00d1ae;
+  width: 200px;
+  height: 200px;
+  transition-property: width;
+  transition-duration: 2s;
+  transition-timing-function: linear;
+  transition-delay: 1s;
+}
+
+.box {
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  text-align: center;
+  font-size: 0;
+}
+
+.box:hover {
+  background-color: green;
+  width: 100%;
+  font-size: 20px;
+  transition: width 5s, background-color 5s, font-size 0s linear 5s;
+}
+/* ANIMATIONS */
+.container {
+  animation-name: myslidein;
+  animation-duration: 3s;
+  animation-delay: 5s;
+  margin-left: 50%;
+}
+
+@keyframes myslidein {
+  0% {
+    margin-left: 100%;
+  }
+  50% {
+    margin-left: 10%;
+  }
+  100% {
+    margin-left: 50%;
+  }
+}
+
+.hexagon {
+  position: relative;
+  width: 100px;
+  height: 57.74px;
+  background-color: #00d1ae;
+  margin: 28.87px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 28.87px solid #00d1ae;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 28.87px solid #00d1ae;
+}
+
+/* ----- SELECTORS ------ */
+/* Descendant Selector: select every div inside of .body */
+selector1 selector2 {
+}
+/* tag selector: selects all tags */
+body {
+}
+/* Class selectors: selects all elements with the specified class */
+.class {
+}
+/* select only the element, that has BOTH selectors */
+.class1.class2 {
+}
+div.class2 {
+}
+
+/* Id selectors: selects the ONE element with the specified ID */
+#id {
+}
+/* Adjacent Sibling: selects only the specified element that 
+immediately follows the former specified element */
+formerElement + targetElement {
+}
+/* Multiple selection: selects every element that matches one or more */
+selector1,
+selector2 {
+}
+/* Attribute selection: selects every element that has an attribute that
+contains the  */
+element[attr-name="value"] {
+}
+a[href*="hack"] {
+  /* kind of wildcard, that loojs if "hack" is part of the link*/
+  color: green;
+}
+/* react to events, on hover*/
+.box:hover {
+}
+
+/* ----- RESPONSIVE DESIGN -------- */
+/* --- mobile first - approach:
+  create the site for mobile fist and make the rules without @media screen sizes, 
+  then adjust for bigger screens! 
+
+Create a media query within a stylesheet: @media
+    @media [(media-features)] {
+      // Styles
+    }
+    you can combine different conditions with 'and'
+*/
+@media (min-width: 500px) and (max-width: 1000px) {
+  .responsive-div {
+    background-color: blue;
+  }
+}
+
+/* EXAMPLE FOR 3 BOXES, which should show differently on different screen sizes */
+.responsive-div {
+  background-color: black;
+  height: 100px;
+  width: 96%;
+  color: white;
+  text-align: center;
+  float: left;
+  margin: 10px;
+}
+.inner {
+  padding-top: 40px;
+}
+.inner:before {
+  content: "black";
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+  .responsive-div {
+    background-color: green;
+    width: 50%;
+  }
+
+  .inner:before {
+    content: "green";
+  }
+}
+@media (min-width: 800px) {
+  .responsive-div {
+    background-color: red;
+    width: 30%;
+  }
+
+  .inner:before {
+    content: "red";
+  }
+}
+
+/* within a different stylesheet: 
+<link rel="stylesheet" media="(media-features)" href="styles.css" /> */
+
+/* this will prevent the device to just zoom out!! (in HTML) - I made my website responsive!
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+*/
