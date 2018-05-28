@@ -323,3 +323,53 @@ Create a media query within a stylesheet: @media
 /* this will prevent the device to just zoom out!! (in HTML) - I made my website responsive!
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
 */
+
+/* BOOTSTRAP 
+  - a library of CSS classes for responsive designgs
+  - you can define different rules for different sizes just with css classes!
+  - you can combine them! 
+  - by default it is based on 12 
+  - just read the documentation: https://getbootstrap.com/docs/4.1/layout/grid/
+  */
+
+.container {
+  /* class that shows content, it is responsive and will adjust according to screen size 
+  --> in bigger screens it will not take the whole screen but just an amount so you still can read it properly */
+}
+.row {
+  /* class that creates a row */
+}
+.col {
+  /* class that creates a column */
+}
+.col-sm {
+  /* class that creates a column, but only if the screen is bigger than a specific size */
+}
+.col-md {
+  /* class that creates a column, but only if i am on a medium or large screen, otherwise the col will be a row */
+}
+.col-lg {
+  /* class that creates a column, but only if i am not on a big screen */
+}
+
+.col-3 {
+  /* creates a col which has a width of 3/12
+  if there are col without specified weight, the remaining space will get distributed evenly
+  if they are displayed as a row they will get the whole screen size */
+}
+
+/* ---- PADDING / MARGIN / .... */
+.m-5 {
+  /* adds a margin everywhere */
+}
+.ml-5 {
+  /* adds a margin-left of 5rem */
+}
+.pr-5 {
+  /* adds a padding-right of 5rem, this will not add to the width */
+}
+.mx-auto {
+  /* adds a margin auto to left and right ---> this will center your content */
+}
+
+/* CAROUSEL: Adds a slide for images! */
