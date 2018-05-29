@@ -66,7 +66,35 @@ $(".main-nav .selected-item");
 // Next Adjacent selector: Select all the label inside a form
 $("form + label");
 
-// change css styles via jQuery: $('css-selector').('property', 'value')
+// CANNOT select a jQuery element with, this will get you the normal HTML DOM Element,
+// you cannot call any jQuery functions on it!
+$("li")[0];
+$($("li")[0]); // this will create a jQuery DOM Element again!
+
+// ------- FILTER ------
+$("body p:first");
+
+$("nav ul li:last");
+
+$("#main-menu li:even");
+
+$("p:not(.ironhack)");
+
+$("li:contains(2)"); // select li items that contain '2'
+
+$("form *:hidden"); // Select all the hidden elements in a <form>
+
+$("ul#menu li:visible"); // Select all the visible elements from a <ul> menu
+
+$(".selector:parent"); // all elements that have at least one child node (either an element or text)
+
+$("#menu:first-child"); // Select the first element of a menu
+
+$("#menu:last-child"); // Select the last element of a menu
+
+$("#list:nth-child(odd)"); // Select all the odd elements from a list
+
+// ------- change css styles via jQuery: $('css-selector').('property', 'value')
 $("li")
   .css("color", "blue")
   .css("font-size", "20px");
@@ -121,3 +149,14 @@ $(this).toggleClass("active");
 
 // ------ get a String which includes the classes:
 $(this).prop("class");
+
+// toggle show/hide:
+$("h1").toggle();
+
+/* DIFFERENCE between ATTRIBUTE and PROPERTY !
+A property is a representation of an attribute in the DOM, while an attribute represents the same 
+value we have in the HTML. Once the browser interprets our HTML code, 
+it will create a corresponding DOM Node which is an object thus having properties.
+Since attr() gives you the value of the element as it was defined in the HTML when the page was loaded, 
+it’s always recommended to use prop() to get values of elements which are modified via JavaScript/jQuery, 
+as it gives you the value of an element’s current state. */
