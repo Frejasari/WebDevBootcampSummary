@@ -160,3 +160,39 @@ it will create a corresponding DOM Node which is an object thus having propertie
 Since attr() gives you the value of the element as it was defined in the HTML when the page was loaded, 
 it’s always recommended to use prop() to get values of elements which are modified via JavaScript/jQuery, 
 as it gives you the value of an element’s current state. */
+
+// ----- select elements through their relationship, you can put an optional selector to it!
+$(this).parent(); // get the parent
+$(this).children(); // get all children
+$(this).prev(); // get the previous sibling
+$(this).prevAll(); // get all previous siblings
+$(this).find("selector"); // get all elements that are descendants of the current element
+$(this).siblings(); // get all siblings
+
+$(document).ready(function() {
+  $(".fa-trash-o").on("click", removeOnClick);
+
+  $("#add-task").on("click", addTask);
+});
+
+// add keydown listener!
+$("#todo-content").keydown(function(event) {
+  if (event.key === "Enter") {
+    addTask();
+  }
+});
+
+function addTask() {
+  var newTask = $("#todo-content").val();
+  $("#task-list").append(
+    "<li> <span>" + newTask + '</span><i class="fa fa-trash-o new" aria-hidden="true"></i></li>'
+  );
+  $(".fa-trash-o.new").on("click", removeOnClick);
+  $(".fa-trash-o.new").removeClass("new");
+}
+
+function removeOnClick() {
+  $(this)
+    .parent()
+    .remove();
+}
