@@ -635,6 +635,21 @@ setTimeout(() => {
 //  THE BIND KEYWORD
 chrono.startClick.bind(chrono);
 // this sets the this in startClick to chromo!!!!
+// ---------- CLOSURES AND SCOPE ---------
+// the outermost scope in a browser is the window
+var a = 1;
+console.log(window.a === 1); /// returns true!
+
+// DON'T OMMIT THE VAR KEYWORD!
+// if I do this it will create a global variable!
+// shaddow: a local variable with the same name as a global variable will shadow the outer one!
+var a = 1;
+var b = 2;
+
+function inner() {
+  a = 4; // not using `var`
+  var b = 3; // using 'var' | Shadowing the global variable
+}
 
 // THIS Keyword!
 // in a lambda the 'this' keyword will not correspond to the actual
