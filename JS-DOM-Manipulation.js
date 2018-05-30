@@ -130,10 +130,11 @@ $(".selector").hover(
 
 $(document).on(
   {
-    mouseenter: function() {
+    mouseenter: function(event) {
+      event.preventDefault();
       //stuff to do on mouse enter
     },
-    mouseleave: function() {
+    mouseleave: function(event) {
       //stuff to do on mouse leave
     }
   },
@@ -169,6 +170,9 @@ $(this).prevAll(); // get all previous siblings
 $(this).find("selector"); // get all elements that are descendants of the current element
 $(this).siblings(); // get all siblings
 
+//  ----------------------------------------
+// EXAMPLE:  https://codepen.io/ironhack/pen/KNmVaB
+
 $(document).ready(function() {
   $(".fa-trash-o").on("click", removeOnClick);
 
@@ -196,3 +200,21 @@ function removeOnClick() {
     .parent()
     .remove();
 }
+// -------------------------------------------
+
+// LISTENERS
+$("#todo-content").keydown(function(event) {
+  event.key; // gets the key which triggered the event ('enter') e.g.
+});
+$("#todo-content").keyup(function(event) {});
+
+$(document).ready(function() {
+  $("form").submit(function(e) {
+    e.preventDefault(); // prevents the default behavior!!!
+    console.log("submit form");
+    $("#info").text("Text");
+  });
+});
+
+// ADD and REMOVE EVENT LISTENERS:
+// https://stackoverflow.com/questions/1755815/disable-all-click-events-on-page-javascript

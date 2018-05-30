@@ -558,6 +558,7 @@ var duck = new Duck("Daffy");
 add breakpoint by clicking on the nr of the line
 'step over next function call' -> leads to next line in code if there is no function in this line, will not look into if or for loops! 
 you can add some variables or functions to watches
+in tab Elements you can have a look at the event listeners
 */
 
 // try-catch-statement
