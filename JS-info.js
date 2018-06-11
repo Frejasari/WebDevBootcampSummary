@@ -634,7 +634,8 @@ setTimeout(() => {
 
 //  THE BIND KEYWORD
 chrono.startClick.bind(chrono);
-// this sets the this in startClick to chromo!!!!
+// this sets the this in startClick to chrono!!!!
+
 // ---------- CLOSURES AND SCOPE ---------
 // the outermost scope in a browser is the window
 var a = 1;
@@ -651,5 +652,60 @@ function inner() {
   var b = 3; // using 'var' | Shadowing the global variable
 }
 
-// THIS Keyword!
+//////////////// THIS Keyword!////////////////////////
 // in a lambda the 'this' keyword will not correspond to the actual
+
+// -------- BIND, APPLY AND CALL -------
+// every object has a function bind, call and apply which can be used to call a function on a specific
+var obj = {
+  foo: function(a, b, c) {
+    console.log(arguments);
+    console.log(this);
+  }
+};
+
+var bindFoo = obj.foo.bind(window); // => creates a new function whichs this keyword is set to window
+bindFoo(1, 2, 3);
+// ==> [1,2,3]
+// ==> window {}
+var bindFoo = obj.foo.bind("Berlin"); // => creates a new function whichs this keyword is set to 'Berlin'
+bindFoo(1, 2, 3);
+// ==> [1,2,3]
+// ==> 'Berlin' // typeof object
+
+obj.foo(1, 2, 3);
+// ==> [1,2,3]
+// ==> obj {}
+
+obj.foo.apply(window, [1, 2, 3]);
+// ==> [1,2,3]
+// ==> window {}
+
+obj.foo.call(window, 1, 2, 3);
+// ==> [1,2,3]
+// ==> window {}
+
+var obj = {
+  value: 0,
+  // increment: function(){this.value++;},
+  // increment : plusPlus // this equals to the current object
+  // increment: function(){ plusPlus();} // this refers to the global
+  // increment: function(){ plusPlus.bind(this)();} // this refers to the object now
+  // increment: plusPlus2 // works if var plusPlus2 is defined before the object
+  increment: function() {
+    this.value++;
+    var innerFunction = function() {
+      console.log(this.value); // this refers to the window
+    };
+    innerFunction();
+  },
+  incrementLater(ms) {
+    setTimeout(plusPlus.bind(this), ms); // this works!
+  }
+};
+// obj.incrementLater(10)
+// console.log();
+
+function plusPlus() {
+  this.value++;
+}
